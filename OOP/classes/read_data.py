@@ -19,6 +19,8 @@ class CountryData:
             return json.load(country_file)
 
 
+
+
 egypt = CountryData('data/egypt.json')
 print(egypt.file_data)
 print(egypt.country)
