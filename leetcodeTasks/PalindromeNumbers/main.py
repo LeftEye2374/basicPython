@@ -15,15 +15,15 @@ if len(string) % 2 == 0:
         secondPart.append(string[index])
         index -= 1
     if firstPart == secondPart:
-        return True
+        print(True)
     else:
-        return False
+        print(False)
 else:
     chars = []
     for i in range(0, len(string)):
         chars.append(string[i])
     if chars[0] == chars[-1]:
-        return True
+        print(True)
     else:
-        return False
+        print(False)
    
