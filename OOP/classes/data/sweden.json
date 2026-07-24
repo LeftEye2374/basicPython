@@ -1,5 +1,6 @@
 {
   "country" : "Sweden",
   "max_temp": 25,
-  "min_temp": -5
+  "min_temp": -5,
+  "sunny_days": 10
 }

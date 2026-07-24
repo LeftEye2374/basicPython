@@ -19,6 +19,11 @@ class CountryData:
             return json.load(country_file)
 
 
+class CountyDataWithSunDays(CountryData): # дочерний класс CountyData
+    def __init__(self, file_path):
+        super().__init__(file_path)
+        self.sunny_days = self.file_data['sunny_days']
+
 
 
 egypt = CountryData('data/egypt.json')
@@ -27,8 +32,9 @@ print(egypt.country)
 print(egypt.max_temp)
 print(egypt.min_temp)
 
-sweden = CountryData('data/sweden.json')
+sweden = CountyDataWithSunDays('data/sweden.json')
 print(sweden.file_data)
 print(sweden.country)
 print(sweden.max_temp)
 print(sweden.min_temp)
+print(sweden.sunny_days)
