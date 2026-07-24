@@ -1,11 +1,20 @@
-s = 'Stroka'
-s_itr = iter(s)
-print(s_itr)
+# первый вариант = генератор - список - список
+n = 10000
+z = []
+x = list(range(n))
 
-print(s_itr.__next__())
-print(s_itr.__next__())
-print(s_itr.__next__())
-print(s_itr.__next__())
-print(s_itr.__next__())
-print(s_itr.__next__())
-print(s_itr.__next__())
+for i in x:
+    z.append(i ** 2)
+print(sum(z))
+
+
+#вариант два генератор список итератор список
+y = map(lambda val: val ** 2, x)
+print(sum(y))
+
+#вариант три генератор список иттератор
+sum = 0
+
+for i in x:
+    sum += i ** 2
+print(sum)
