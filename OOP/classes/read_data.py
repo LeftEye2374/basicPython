@@ -18,6 +18,9 @@ class CountryData:
         with open(self.file_path, 'r') as country_file:
             return json.load(country_file)
 
+    def is_comfortable(self):
+        return self.max_temp - self.min_temp > 10
+
 
 class CountyDataWithSunDays(CountryData): # дочерний класс CountyData
     def __init__(self, file_path):
@@ -25,12 +28,15 @@ class CountyDataWithSunDays(CountryData): # дочерний класс CountyDa
         self.sunny_days = self.file_data['sunny_days']
 
 
+    def is_comfortable(self):
+        return self.max_temp - self.min_temp + self.sunny_days > 10
 
 egypt = CountryData('data/egypt.json')
 print(egypt.file_data)
 print(egypt.country)
 print(egypt.max_temp)
 print(egypt.min_temp)
+print(egypt.is_comfortable())
 
 sweden = CountyDataWithSunDays('data/sweden.json')
 print(sweden.file_data)
@@ -38,3 +44,4 @@ print(sweden.country)
 print(sweden.max_temp)
 print(sweden.min_temp)
 print(sweden.sunny_days)
+print(sweden.is_comfortable())
