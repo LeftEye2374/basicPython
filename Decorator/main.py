@@ -23,8 +23,18 @@ def timer_deco(func : Callable):
         return res
     return wrapper
 
-@timer_deco
-def my_function():
+def parametrized_timer_deco(func : Callable):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        res = func(*args, **kwargs)
+        end = time.time()
+        print(f"Исполнение заняло - {end-start}")
+        return res
+    return wrapper
+
+@parametrized_timer_deco
+def my_function(sleep_second : int):
+    time.sleep(sleep_second)
     return 124
 
-print(my_function())
+print(my_function(2))
