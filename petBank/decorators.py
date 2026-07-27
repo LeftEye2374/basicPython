@@ -1,6 +1,6 @@
 from functools import wraps
 from typing import Callable
-from exceptions import MyCustomException as ex
+import exceptions as ex
 
 class Decorators:
 
@@ -13,14 +13,20 @@ class Decorators:
         return wrapper
 
 
-    def validate_positive_amount(amount : float):
-        def wrapper(func : Callable):
-            @wraps(func)
-            def inner(*args, **kwargs):
-                nonlocal amount
-                if amount <= 0:
-                    raise ex.NegativeAmountError(amount)
-                res = func(*args, **kwargs)
-                return res
-            return inner
-        return wrapper
+
+    def validate_positive_amount(func: Callable):
+        @wraps(func)
+        def inner(*args, **kwargs):
+            # Сначала ищем именованный аргумент amount
+            if "amount" in kwargs:
+                amount = kwargs["amount"]
+            else:
+                # Предполагаем, что amount — первый позиционный аргумент
+                amount = args[0]
+
+            if amount <= 0:
+                raise ex.NegativeAmountError(amount)
+
+            return func(*args, **kwargs)
+
+        return inner

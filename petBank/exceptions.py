@@ -1,13 +1,22 @@
-class MyCustomException(Exception):
+class BankError(Exception):
 
-    def InsufficientFundsError(self):
-        print('Недостаточно средств на счете')
+    def __init__(self, message):
+        self.message = message
 
-    def NegativeAmountError(self):
-        print('Сумма не может быть меньше 1')
 
-    def AccountNotFoundError(self):
-        print('Не найден аккаунт для перевода')
+class InsufficientFundsError(BankError):
 
-    def OverdraftLimitExceededError(self):
-        print('Нельзя уйти глубже лимита овердрафта')
+    def __init__(self, message):
+        super().__init__(message)
+
+class NegativeAmountError(BankError):
+    def __init__(self, message):
+        super().__init__(message)
+
+class AccountNotFoundError(BankError):
+    def __init__(self, message):
+        super().__init__(message)
+
+class OverdraftLimitExceededError(BankError):
+    def __init__(self, message):
+        super().__init__(message)
