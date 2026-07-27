@@ -1,0 +1,13 @@
+class MyCustomException(Exception):
+
+    def InsufficientFundsError(self):
+        ...
+
+    def NegativeAmountError(self):
+        ...
+
+    def AccountNotFoundError(self):
+        ...
+
+    def OverdraftLimitExceededError(self):
+        ...
