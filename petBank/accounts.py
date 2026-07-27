@@ -12,8 +12,16 @@ class Account:
         self.balance += amount
 
     @classmethod
-    def createAccount(self, owner_name):
-        self.owner = owner_name
-        self.balance = 0
-        self.account_number = randint(1,9999)
+    def create_account(cls,owner_name):
+        account_number = randint(1,9999)
+        account = Account(owner_name,account_number,account_number)
+        return account
 
+
+
+    def get_owner(self):
+        print(self.owner)
+    def get_balance(self):
+        print(self.balance)
+    def get_account_number(self):
+        print(self.account_number)

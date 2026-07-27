@@ -12,10 +12,8 @@ def start():
     options = int(input())
 
     if options == 1:
-        for i in bank_accounts:
-            print(i.owner)
-            print(i.balance)
-            print(i.account_number)
+        for i in range(len(bank_accounts)):
+            print(bank_accounts[i].get_owner)
             print('_____________')
     elif options == 2:
         ...
@@ -24,7 +22,7 @@ def start():
     elif options == 4:
         print('Введите имя пользователя:')
         owner = str(input())
-        account = Account.createAccount(owner)
+        account = Account.create_account(owner)
         bank_accounts.append(account)
 
 while True:
