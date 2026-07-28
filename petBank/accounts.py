@@ -23,8 +23,17 @@ class Account:
             to_transfer += amount
             print('Перевод успешно совершен')
 
-    def deposit(self, account_number, amount):
-        ...
+    def deposit(self, amount):
+        if amount < 0:
+            raise ex.NegativeAmountError
+        self.balance += amount
+
+    def withdraw(self, amount):
+        if amount < 0:
+            raise ex.NegativeAmountError
+        self.balance -= amount
+        
+
 
     """ Геттеры для работы с классом"""
     def get_owner(self):
