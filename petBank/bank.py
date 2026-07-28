@@ -1,7 +1,7 @@
 import random
 
 from accounts import Account
-
+from exceptions import AccountNotFoundError
 
 class Bank:
 
@@ -15,11 +15,14 @@ class Bank:
         return account_number
 
     def get_account(self, account_number):
-        return self.accounts[account_number]
+        if account_number in self.accounts:
+            return self.accounts[account_number]
+        else:
+            raise AccountNotFoundError("Аккаунт не найден")
 
     def transfer(self, from_number, to_number, amount):
         from_account = self.get_account(from_number)
         to_account = self.get_account(to_number)
-        from_account.get_balance -= amount
-        to_account.get_balance += amount
+        from_account.withdraw(amount)
+        to_account.deposit(amount)
         

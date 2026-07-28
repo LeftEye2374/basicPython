@@ -9,30 +9,18 @@ class Account:
 
     """ Методы класса """
 
-    def transfer(self, amount, where_transfer, to_transfer):
-        if where_transfer < amount:
-            raise ex.InsufficientFundsError("Недостаточно средств на счете")
-        elif where_transfer <= 0:
-            raise ex.NegativeAmountError("Сумма не может быть отрицательной")
-        elif amount < 1:
-            raise ex.AccountNotFoundError("Аккаунт не найден")
-        elif amount > 50_000:
-            raise ex.OverdraftLimitExceededError("Превышен лимит овердрафта")
-        else:
-            where_transfer -= amount
-            to_transfer += amount
-            print('Перевод успешно совершен')
-
     def deposit(self, amount):
         if amount < 0:
-            raise ex.NegativeAmountError
+            raise ex.NegativeAmountError("Сумма не может быть отрицательной")
         self.balance += amount
 
     def withdraw(self, amount):
         if amount < 0:
-            raise ex.NegativeAmountError
+            raise ex.NegativeAmountError("Сумма не может быть отрицательной")
+        if self.balance < amount:
+            raise ex.InsufficientFundsError("Не достаточно средств")
         self.balance -= amount
-        
+
 
 
     """ Геттеры для работы с классом"""

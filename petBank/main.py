@@ -24,18 +24,21 @@ def start():
         try:
             bank.transfer(from_account, to_account, amount)
         except BankError as e:
-            print(e.message())
+            print(e)
     elif options == 3:
         print("Введите номер аккаунта: ")
         account_number = int(input())
         print("Введите сумму: ")
         amount = int(input())
-        account = bank.accounts[account_number]
-        account.deposit(amount)
+        try:
+            account = bank.get_account(account_number)
+            account.deposit(amount)
+        except BankError as e:
+            print(e)
     elif options == 4:
         print("Введите имя")
         owner = input()
-        bank.open_account(owner)
+        print(bank.open_account(owner))
 
 print('Банк')
 while True:
