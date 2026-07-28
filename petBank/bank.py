@@ -1,4 +1,8 @@
+from accounts import Account
+
+
 class Bank:
 
     def __init__(self):
-        self.accounts = {}
+        self.accounts : dict[int, Account] = {}
+        

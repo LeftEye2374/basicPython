@@ -7,6 +7,8 @@ class Account:
         self.balance = balance
         self.account_number = account_number
 
+    """ Методы класса """
+
     def transfer(self, amount, where_transfer, to_transfer):
         if where_transfer < amount:
             raise ex.InsufficientFundsError("Недостаточно средств на счете")
@@ -21,13 +23,10 @@ class Account:
             to_transfer += amount
             print('Перевод успешно совершен')
 
-    def deposit(self):
+    def deposit(self, account_number, amount):
         ...
 
-    def withdraw(self):
-        ...
-
-
+    """ Геттеры для работы с классом"""
     def get_owner(self):
         return self.owner
     def get_balance(self):
