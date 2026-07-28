@@ -17,7 +17,7 @@ class Bank:
     def get_account(self, account_number):
         return self.accounts[account_number]
 
-    def deposit(self, from_number, to_number, amount):
+    def transfer(self, from_number, to_number, amount):
         from_account = self.get_account(from_number)
         to_account = self.get_account(to_number)
         from_account.get_balance -= amount
