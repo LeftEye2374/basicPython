@@ -22,7 +22,7 @@ class Decorators:
                 amount = kwargs["amount"]
             else:
                 # Предполагаем, что amount — первый позиционный аргумент
-                amount = args[0]
+                amount = args[-1]
 
             if amount <= 0:
                 raise ex.NegativeAmountError(amount)

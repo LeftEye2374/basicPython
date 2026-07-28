@@ -9,6 +9,7 @@ def start():
     print('2. Перевести деньги')
     print('3. Положить на счет')
     print('4. Создать аккаунт')
+    print('5. Просмотреть историю транзакций')
     options = int(input())
 
     if options == 1:
@@ -39,6 +40,12 @@ def start():
         print("Введите имя")
         owner = input()
         print(bank.open_account(owner))
+    elif options == 5:
+        print("Введите номер аккаунта: ")
+        account_number = int(input())
+        account = bank.get_account(account_number)
+        for entry in account.transaction_history():
+            print(entry)
 
 print('Банк')
 while True:
